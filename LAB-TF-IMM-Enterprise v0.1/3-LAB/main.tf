@@ -32,7 +32,7 @@ provider "intersight" {
 # Example Use:  org_moid = data.intersight_organization_organization.my_org.id
 
 data "intersight_organization_organization" "my_org" {
-    name = "juan"
+    name = "default"
 }
 
 
@@ -46,17 +46,17 @@ locals {
 
 # ===================== Define Input Variables  ==========================================
 # Define Input Variables
-# Usage from CLI:  terraform plan -var "api_key=<my-key>" -var "secretkey=<pem-key>"
+# Usage from CLI:  terraform plan -var "apikey=<my-key>" -var "secretkey=<pem-key>"
 # Variables can be set in TFCB "Variables" section of the Workspace
-# Variables can be set with environment variables (MAC):  export TF_VAR_api_key=<my-api-key>
+# Variables can be set with environment variables (MAC):  export TF_VAR_apikey=<my-api-key>
 
-#         export TF_VAR_api_key=<my-api-key>
+#         export TF_VAR_apikey=<my-api-key>
 variable "apikey" {
   description = "API key ID for Intersight account"
   type        = string
 }
 
-#         export TF_VAR_api_key=<my-secret-pem-key>
+#         export TF_VAR_apikey=<my-secret-pem-key>
 #   or    export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
 variable "secretkey" {
   description = "secret key for Intersight API vsn 2"

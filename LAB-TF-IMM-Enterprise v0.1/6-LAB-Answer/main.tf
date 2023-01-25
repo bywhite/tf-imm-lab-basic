@@ -32,7 +32,7 @@ provider "intersight" {
 #The target Intersight Organization should be created manually in Intersight
 # Example Use:  org_moid = data.intersight_organization_organization.my_org.id
 data "intersight_organization_organization" "my_org" {
-    name = "juan"
+    name = "default"
 }
 
 

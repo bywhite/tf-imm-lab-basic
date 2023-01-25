@@ -1,7 +1,7 @@
 # ==========================================================================================
 # The purpose of this module is to create a chassis profile with required policies and pool
 # This code is intended to run with Terraform locally installed
-# The code requires an Intersight API v2 Key & Secret and Intersight Org named "juan"
+# The code requires an Intersight API v2 Key & Secret and Intersight Org named "default"
 #    
 # ------------------------------------------------------------------------------------------
 # IMM Code Examples Can Be Found at:
@@ -11,7 +11,7 @@
 # https://github.com/scotttyso/terraform-intersight-easy-imm
 # ------------------------------------------------------------------------------------------
 
-# We start wit defining the Terraform Providers required for our main module
+# We start wiht defining the Terraform Providers required for our main module
 # Varibles are used to allow us to pass in sensitive data and keep secrets external to our code
 
 terraform {
@@ -31,10 +31,10 @@ provider "intersight" {
     endpoint = "https://intersight.com"
 }
 
-# !! The target Intersight Organization "juan" should be created manually in Intersight !!
+# !! The target Intersight Organization "default" should be created manually in Intersight !!
 
 data "intersight_organization_organization" "my_org" {
-    name = "juan"
+    name = "default"
 }
 # Don't forget to add the above Organization to your Intersight https://intersight.com
 
@@ -58,14 +58,14 @@ locals {
 # Terraform can import variables when prefixed by "TF_VAR_" from the OS environment (Mac/Windows/Linux) 
 #  that match variable declarations within the Terraform HCL main module
 
-# Mac:        export TF_VAR_api_key=<my-api-key>
+# Mac:        export TF_VAR_apikey=<my-api-key>
 variable "apikey" {
   description = "API key ID for Intersight account"
   type = string
 }
 
 # Mac:
-#         export TF_VAR_api_key=<my-secret-pem-key>
+#         export TF_VAR_apikey=<my-secret-pem-key>
 #   or    export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
 variable "secretkey" {
   description = "secret key for Intersight API vsn 2"
