@@ -63,6 +63,7 @@ variable "apikey" {
 variable "secretkey" {
   description = "secret key for Intersight API vsn 2"
   type        = string
+  sensitive   = true
 }
 
 

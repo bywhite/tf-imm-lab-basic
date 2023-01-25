@@ -11,10 +11,10 @@ variable "apikey" {
   type        = string
 }
 
-#         export TF_VAR_api_key=<my-secret-pem-key>
-#   or    export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
+#         export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
 variable "secretkey" {
   description = "secret key for Intersight API vsn 2"
   type        = string
+  sensitive   = true
 }
 
