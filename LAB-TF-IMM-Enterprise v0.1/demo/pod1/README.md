@@ -1,9 +1,9 @@
 
-# Creating servers in Intersight using Terraform Cloud for Business
+# Creating servers in Intersight using Terraform
 
 This terraform plan for Intersight can create multiple IMM domains.
 
-This code is a simplified version of the example code located at:
+This code is a simplified version of the TFCB example code located at:
 https://github.com/bywhite/cen-iac-imm-dev-pod1
 which calls the modules located at:
 https://github.com/bywhite/cen-iac-imm-dev-pod1-mods
@@ -13,7 +13,7 @@ This code is intended to run locally on a workstations with Terraform installed 
 
 The pod-pools are created based on the Pod ID and can be varied in pool size. Pools are created first (depends_on)
 The pod-domains create the policies and profiles needed for both FI's and chassis
-The pod-srv-templates create a specified number server profiles based on a common server template
+The pod-srv-templates create a customized server profile template
 
 All that is required to create a new domain is to copy pod-domain-vmw-1.tf to a new file name and change 3 identifiers at the top of the pod-domain-<new_name> module.  
     Example: replace instances of "vmw_1" with <new_name> "vmw_2"
