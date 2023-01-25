@@ -84,7 +84,10 @@ output "my_org" {
 # ===================== Start Code Resource Section  =====================================
 
 
-
 #<<<<<  Run Terraform init and Terraform plan when ready     >>>>>>
 #<<<<<  If successful, run Terraform apply and enter yes     >>>>>>
+
+# Properly formatted code aligns all of the = signs in a block
+#<<<<<  Run Terraform fmt                                    >>>>>>
+#       Note how the formatting has been cleaned up for you
 #<<<<<  If successful, run Terraform apply a second time     >>>>>>
