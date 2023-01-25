@@ -57,8 +57,8 @@ variable "apikey" {
   type = string
 }
 
-#         export TF_VAR_apikey=<my-secret-pem-key>
 #   or    export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
+#                          Note:  ^  the two backticks above are not the same as single quotes ` vs '
 variable "secretkey" {
   description = "secret key for Intersight API vsn 2"
   type = string

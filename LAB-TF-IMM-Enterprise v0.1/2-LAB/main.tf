@@ -51,14 +51,15 @@ locals {
 # Variables can be set in TFCB "Variables" section of the Workspace
 # Variables can be set with environment variables (MAC):  export TF_VAR_apikey=<my-api-key>
 
-#         export TF_VAR_apikey=<my-api-key>
+# MAC CLI:        export TF_VAR_apikey=<my-api-key>
 variable "apikey" {
   description = "API key ID for Intersight account"
   type        = string
 }
 
-#         export TF_VAR_apikey=<my-secret-pem-key>
-#   or    export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
+
+# MAC:    export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
+#                          Note:  ^  the two backticks above are not the same as single quotes ` vs '
 variable "secretkey" {
   description = "secret key for Intersight API vsn 2"
   type        = string
