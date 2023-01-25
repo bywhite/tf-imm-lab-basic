@@ -4,7 +4,7 @@
 # The pod uses a common set of large pools of identifiers (UUID, MAC, WWNN, WWPN, IMC-IP's)
 #     - pod-domain config files define each IMM domain
 #     - pod-pools config file defines the pod-wide identity pools
-#     - pod-srv-template config files create template based server profiles
+#     - pod-srv-template config files create server profile templates
 # ------------------------------------------------------------------------------------------
 
 
