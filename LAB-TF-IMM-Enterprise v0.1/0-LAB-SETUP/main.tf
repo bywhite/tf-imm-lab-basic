@@ -1,8 +1,9 @@
 # ==========================================================================================
-# The purpose of this module is to create a chassis profile with required policies and pool
-# This code is intended to run with Terraform locally installed
-# The code requires an Intersight API v2 Key & Secret and Intersight Org named "default"
-#    
+# The purpose of this set of labs is to create a chassis profile with required policies and pool
+# This lab is intended to establish a connection with Intersight using its Terraform provider
+# This code is intended to run with Terraform locally installed with Intersight.com access
+# The labs require an Intersight API v2 Key & Secret with an Intersight Org named "demo-tf"
+# 
 # ------------------------------------------------------------------------------------------
 # IMM Code Examples Can Be Found at:
 # https://github.com/jerewill-cisco?tab=repositories
@@ -16,32 +17,30 @@
 
 terraform {
 
-    #Setting required version "=" to eliminate any future adverse behavior without testing first
-    required_providers {
-        intersight = {
-            source = "CiscoDevNet/intersight"
-            version = "=1.0.34"
-        }
+  #Setting required version "=" to eliminate any future adverse behavior without testing first
+  required_providers {
+    intersight = {
+      source  = "CiscoDevNet/intersight"
+      version = "=1.0.34"
     }
+  }
 }
 
 provider "intersight" {
-    apikey = var.apikey
-    secretkey = var.secretkey
-    endpoint = "https://intersight.com"
+  apikey    = var.apikey
+  secretkey = var.secretkey
+  endpoint  = "https://intersight.com"
 }
 
-# !! The target Intersight Organization "default" should be created manually in Intersight !!
-
+# !! The Intersight Organization name below should be created manually before proceeding!!
 data "intersight_organization_organization" "my_org" {
-    name = "default"
+  name = "demo-tf"
 }
-# Don't forget to add the above Organization to your Intersight https://intersight.com
 
 
 # ===================== Define Local Variables  ==========================================
-# We need to retrieve the Organization Managed Object ID (moid) from Intersight so we can 
-#  use it to create objects in that organization in Intersight
+# We need to retrieve the Organization's Managed Object ID (moid) from Intersight so we can 
+#  assign it to created objects
 locals {
 
   org_moid = data.intersight_organization_organization.my_org.id
@@ -52,42 +51,66 @@ locals {
 # ===================== Define Input Variables  ==========================================
 # Define Input Variables
 # For simplicity, it is recommended to use local OS Environment Variables to store variables
-# Examples are for Mac OS, but can use environment variables of any OS
+# Examples are for Mac OS, but you can use environment variables in Windows and other OS's
 
-# Variables can be set with environment variables:  export TF_VAR_<variable_name>=<value>
-# Terraform can import variables when prefixed by "TF_VAR_" from the OS environment (Mac/Windows/Linux) 
-#  that match variable declarations within the Terraform HCL main module
+# Mac CLI example to set environment variable:  export TF_VAR_<variable_name>=<value>
+# Terraform uses the environment variable prefix "TF_VAR_" to identify its variables
+# To use environment variables, they must be pre-defined in a "variable" code block in your code
 
-# Mac:        export TF_VAR_apikey=<my-api-key>
+# Mac:        export TF_VAR_apikey=1234567890/23456abcd1355q29
 variable "apikey" {
   description = "API key ID for Intersight account"
-  type = string
+  type    = string
 }
 
-# Mac:    export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
+# Mac:
+#         export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
 #                          Note:  ^  the two backticks above are not the same as single quotes ` vs '
+# the back-tic tells the command line interpreter to "interpolate" the code within the backtics and insert its output
 variable "secretkey" {
   description = "secret key for Intersight API vsn 2"
-  type = string
+  type    = string
+  sensitive   = true
 }
+
+# Run "env" from the CLI to verify the TF_VAR_apikey and TF_VAR_secretkey are set with the correct values
+# If not, re-run the export commands
+# If you are still having problems setting environment variables, verify you are using back-tics and no quotes
 
 
 # ===================== Define Output Variables  =========================================
 # Define Output Variables to be used outside our module
+# Outputs persist in the state file and can be referenced externally
 output "my_org" {
-  value       = data.intersight_organization_organization.my_org.name
+  value   = data.intersight_organization_organization.my_org.name
   description = "My Intersight Organization Name"
-  sensitive   = false
+  sensitive = false
 }
-
-
 # ===================== Start Code Resource Section  =====================================
 
 
-#<<<<<  Run Terraform init and Terraform plan when ready     >>>>>>
-#<<<<<  If successful, run Terraform apply and enter yes     >>>>>>
+#  Now we will run commands to test our code
 
-# Properly formatted code aligns all of the = signs in a block
-#<<<<<  Run Terraform fmt                                    >>>>>>
-#       Note how the formatting has been cleaned up for you
+# Run:  terraform fmt
+#       Note how the formatting has been cleaned up for you in your main.tf
+# Run: terraform version
+
+# Run:  terraform init
+# Run:  terraform plan
+# Run:  terraform apply 
+#          when prompted enter: yes
+
+# With the apply completed, we now have a state file, let's see what's in it
+# Run:  terraform show
+# Run:  terraform state list
+# Run:  terraform state show data.intersight_organization_organization.my_org
+# Run:  terraform output
+# Run:  terraform output my_org
+
+# More on Terraform State: https://blog.gruntwork.io/how-to-manage-terraform-state-28f5697e68fa
+# Terraform Command Cheat Sheet: https://spacelift.io/blog/terraform-commands-cheat-sheet
+
+
+
+
 #<<<<<  If successful, run Terraform apply a second time     >>>>>>
