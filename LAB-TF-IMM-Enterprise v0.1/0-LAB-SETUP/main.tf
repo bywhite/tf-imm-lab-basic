@@ -80,7 +80,7 @@ variable "secretkey" {
 
 # ===================== Define Output Variables  =========================================
 # Define Output Variables to be used outside our module
-# Outputs persist in the state file and can be referenced externally
+# Outputs persist in the state file and can be referenced after the module completes
 output "my_org" {
   value   = data.intersight_organization_organization.my_org.name
   description = "My Intersight Organization Name"
@@ -111,6 +111,5 @@ output "my_org" {
 # Terraform Command Cheat Sheet: https://spacelift.io/blog/terraform-commands-cheat-sheet
 
 
-
-
-#<<<<<  If successful, run Terraform apply a second time     >>>>>>
+#<<<<<  run Terraform apply a second time, there should be no changes     >>>>>>
+#<<<<<  Terraform apply is idempotent                                     >>>>>>
