@@ -14,7 +14,6 @@
 
 terraform {
 
-    #Setting required version "=" to eliminate any future adverse behavior without testing first
     required_providers {
         intersight = {
             source = "CiscoDevNet/intersight"
@@ -29,11 +28,8 @@ provider "intersight" {
     endpoint = "https://intersight.com"
 }
 
-#The target Intersight Organization should be created manually in Intersight
-# Example Use:  org_moid = data.intersight_organization_organization.my_org.id
-
 data "intersight_organization_organization" "my_org" {
-    name = "default"
+    name = "demo-tf"
 }
 
 
@@ -46,19 +42,13 @@ locals {
 
 
 # ===================== Define Input Variables  ==========================================
-# Other ways to set Variables
-# Usage from CLI:  terraform apply -var "apikey=<my-key>" -var "secretkey=<pem-key>"
-# Variables can be set in TFCB "Variables" section of the Workspace
-# Variables can be set with environment variables (MAC):  export TF_VAR_apikey=<my-api-key>
+# Define Input Variables
 
-#         export TF_VAR_apikey=<my-api-key>
 variable "apikey" {
   description = "API key ID for Intersight account"
-  type        = string
+  type = string
 }
 
-#   or    export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
-#                          Note:  ^  the two backticks above are not the same as single quotes ` vs '
 variable "secretkey" {
   description = "secret key for Intersight API vsn 2"
   type        = string
@@ -78,16 +68,47 @@ output "my_org" {
 # ===================== Start Code Resource Section  =====================================
 
 # Create an IMM Chassis Profile resource
+#   Copy the reference example given and past below
 #   Reference: https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/chassis_profile
 # ** Set "action" and "control_action" parameters to "No-op"
 # ** Set "error_state" parameter to ""
 # ** Set the orgainization "moid" equal to your local organization variable (local.org_moid)
 
+# Paste Example Code Here:
 
 
 
 
-#<<<<<  Run Terraform init and Terraform plan when ready     >>>>>>
-#<<<<<  If successful, run Terraform apply and enter yes     >>>>>>
-#<<<<<  If successful, run Terraform apply a second time     >>>>>>
-#<<<<<  Check your new creation using the Intersight GUI     >>>>>>
+#-----------------------------------------------------------------------------------------
+#=========================================================================================
+#  Now we will run commands to test our code
+
+# Run:  terraform fmt
+#       Note how the formatting has been cleaned up for you in your main.tf
+
+# Run:  terraform init
+# Run:  terraform plan
+# Run:  terraform apply 
+#          when prompted enter: yes
+
+# With the apply completed, we have an updated state file
+# Run:  terraform state list
+# Run:  terraform state show intersight_chassis_profile.chassis_9508_profile1
+#                 Note this shows the alias of the Resource, not the "name" of the profile in Intersight
+
+
+# Experiment with changing the resource "chassis_profile1" on the top line to "chassis1" and run terraform apply
+#  The "chassis_profile1" on the top resource line is an object alias used by terraform to track its state
+#  When it is changed, you are actually destroying that object in state and creating a new one with a new name
+#  If you look in Intersight you will see that the chassis "name" remains unchanged
+
+#  It is very important that resource names/aliases do not change in your code - just the paramerters of the object
+
+# Next try changing just the parameter "name" value on the next line to "my-first-chassis" 
+#   - the "name" change causes just an update, instead of a destroy/recreate as with the resource alias change
+#<<<<<  Check your new chassis profile using the Intersight GUI     >>>>>>
+#  In Intersight you will see that the name of the chassis has changed to the value you set for "name"
+
+
+#<<<<<  run Terraform apply a second time, there should be no changes     >>>>>>
+#  You can run "terraform destroy"  to remove "my-first-chassis" from Intersight
