@@ -1,0 +1,12 @@
+# Directories to Ignore
+**/tfe_modules/*
+
+# Local .terraform directories
+**/.terraform/*
+**/.secret
+**/terraform.tfvars
+**/.terraform.lock.hcl
+
+# Local Files
+SecretKey.txt
+secretkey.txt
