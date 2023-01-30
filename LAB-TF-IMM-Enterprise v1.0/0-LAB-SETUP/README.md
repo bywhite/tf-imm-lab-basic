@@ -1,0 +1,1 @@
+Directions for all labs are found inline in the "main.tf" file for each lab.
