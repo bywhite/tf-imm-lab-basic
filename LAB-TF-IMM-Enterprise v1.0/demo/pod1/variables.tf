@@ -17,11 +17,6 @@ variable "apikey" {
     type = string
 }
 
-variable "secretkey" {
-    description = "Filename that provides secret key for Intersight API"
-    type        = string
-    default     = file("../../SecretKey.txt")
-}
 
 # This is the Intersight URL (could be URL to Intersight Private Virtual Appliance instead)
 variable "endpoint" {

@@ -12,6 +12,8 @@ locals {
 
   # Intersight Organization Variable
   org_moid = data.intersight_organization_organization.my_org.id
+
+  secretkey = file("../../SecretKey.txt")
   
   pod_policy_prefix = "demo-tf"                           # <-- change when copying
   

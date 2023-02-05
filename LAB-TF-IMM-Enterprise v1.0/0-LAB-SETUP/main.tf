@@ -30,7 +30,7 @@ terraform {
 # Place the SecretKey.txt to the parent folder of this files folder (same level as the Lab folders)
 provider "intersight" {
   apikey    = var.apikey
-  secretkey = file("../SecretKey.txt")
+  secretkey = local.secretkey
   endpoint  = "https://intersight.com"
 }
 
@@ -46,6 +46,7 @@ data "intersight_organization_organization" "my_org" {
 locals {
 
   org_moid = data.intersight_organization_organization.my_org.id
+  secretkey = file("../SecretKey.txt")
 
 }
 
