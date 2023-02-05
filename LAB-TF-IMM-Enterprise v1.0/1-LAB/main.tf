@@ -119,3 +119,10 @@ output "my_org" {
 
 # Run: terraform destroy
 #          when prompted enter: yes
+
+
+resource "null_resource" "great-job" {
+  provisioner "local-exec" {
+    command = "say great job, check your chassis profile in Intersight"
+  }
+}
