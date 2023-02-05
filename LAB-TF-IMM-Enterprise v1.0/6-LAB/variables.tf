@@ -18,9 +18,9 @@ variable "apikey" {
   type        = string
 }
 
-variable "secretkey" {
-  description = "secret key for Intersight API vsn 2"
-  type        = string
-  sensitive   = true
-}
+# variable "secretkey" {
+#   description = "secret key for Intersight API vsn 2"
+#   type        = string
+#   sensitive   = true
+# }
 
