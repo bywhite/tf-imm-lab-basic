@@ -22,7 +22,6 @@ terraform {
   required_providers {
     intersight = {
       source  = "CiscoDevNet/intersight"
-      version = "=1.0.34"
     }
   }
 }
@@ -30,7 +29,7 @@ terraform {
 # Place the SecretKey.txt to the parent folder of this files folder (same level as the Lab folders)
 provider "intersight" {
   apikey    = var.apikey
-  secretkey = local.secretkey
+  secretkey = var.secretkey
   endpoint  = "https://intersight.com"
 }
 

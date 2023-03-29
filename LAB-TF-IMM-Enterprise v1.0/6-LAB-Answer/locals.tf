@@ -7,7 +7,9 @@
 locals {
 
   org_moid = data.intersight_organization_organization.my_org.id
-  secretkey = file("../SecretKey.txt")
+  
+  #secretkey = file("../SecretKey.txt")
+  #secretkey = var.secretkey
 
 # The chassis is initially set to "Number" value
   chassis_9508_count = 5

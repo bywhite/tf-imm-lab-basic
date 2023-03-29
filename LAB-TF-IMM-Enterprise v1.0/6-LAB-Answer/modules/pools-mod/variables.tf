@@ -3,12 +3,13 @@ variable "organization" {
   description = "moid for Intersight Org to create pools in"
 }
 
-variable "apikey" {
-  type = string
-  description = "apikey passed from parent module"
-}
+# variable "apikey" {
+#   type = string
+#   description = "apikey passed from parent module"
+# }
 
-variable "secretkey" {
-  type = string
-  description = "secretkey passed from parent module"
-}
+# variable "secretkey" {
+#   description = "secret key for Intersight API vsn 2"
+#   type        = string
+#   sensitive   = true
+# }

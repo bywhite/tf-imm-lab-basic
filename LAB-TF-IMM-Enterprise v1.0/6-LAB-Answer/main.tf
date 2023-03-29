@@ -80,8 +80,8 @@ module "ip_pool1" {
   source = "./modules/pools-mod"
 
   organization = local.org_moid
-  apikey       = var.apikey
-  secretkey    = var.secretkey
+  # apikey       = var.apikey
+  # secretkey    = var.secretkey
 }
 
 
