@@ -20,9 +20,9 @@ variable "apikey" {
 }
 
 # #         export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
-# variable "secretkey" {
-#   description = "secret key for Intersight API vsn 2"
-#   type        = string
-#   sensitive   = true
-# }
+variable "secretkey" {
+  description = "secret key for Intersight API vsn 2"
+  type        = string
+  sensitive   = true
+}
 

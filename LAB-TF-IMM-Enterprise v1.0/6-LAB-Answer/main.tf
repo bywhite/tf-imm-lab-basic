@@ -24,12 +24,12 @@ terraform {
 
 provider "intersight" {
   apikey    = var.apikey
-  secretkey = local.secretkey
+  secretkey = var.secretkey
   endpoint  = "https://intersight.com"
 }
 
 data "intersight_organization_organization" "my_org" {
-    name = "demo-tf"
+    name = "demo"
 }
 
 
@@ -81,7 +81,7 @@ module "ip_pool1" {
 
   organization = local.org_moid
   apikey       = var.apikey
-  secretkey    = file("../SecretKey.txt")
+  secretkey    = var.secretkey
 }
 
 

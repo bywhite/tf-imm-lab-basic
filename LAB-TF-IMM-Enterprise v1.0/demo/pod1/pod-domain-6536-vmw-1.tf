@@ -88,7 +88,7 @@ module "intersight_policy_bundle_vmw_1" {              # <-- change when copying
 
   # Uplink VLANs Allowed List    Example: "5,6,7,8,100-130,998-1011"
   switch_vlans_6536 = "100,101,102,313,314,997-999"
-
+  # switch_vlans_6536 = var.fi_vlans
 
 # =============================================================================
 # Fabric Interconnect 6536 FC Ports and VSANs
@@ -100,8 +100,8 @@ module "intersight_policy_bundle_vmw_1" {              # <-- change when copying
   fc_port_count_6536 = 2
 
   # VSAN ID for FC Port Channel
-  fc_uplink_pc_vsan_id_a = 100
-  fc_uplink_pc_vsan_id_b = 200
+  fc_uplink_pc_vsan_id_a = local.fc_uplink_pc_vsan_id_a
+  fc_uplink_pc_vsan_id_b = local.fc_uplink_pc_vsan_id_b
 
 
 
@@ -151,7 +151,7 @@ module "intersight_policy_bundle_vmw_1" {              # <-- change when copying
 # Chassis
 # -----------------------------------------------------------------------------
 
-  chassis_9508_count = 15
+  chassis_9508_count = 5
   chassis_imc_access_vlan    = 999
   chassis_imc_ip_pool_moid = module.imm_pool_mod.ip_pool_chassis_moid 
   # Chassis requires In-Band IP's Only  (ie must be a VLAN trunked to FI's)

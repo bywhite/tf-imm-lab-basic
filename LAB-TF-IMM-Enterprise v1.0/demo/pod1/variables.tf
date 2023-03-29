@@ -17,6 +17,11 @@ variable "apikey" {
     type = string
 }
 
+variable "secretkey" {
+  description = "secret key for Intersight API vsn 2"
+  type        = string
+  sensitive   = true
+}
 
 # This is the Intersight URL (could be URL to Intersight Private Virtual Appliance instead)
 variable "endpoint" {

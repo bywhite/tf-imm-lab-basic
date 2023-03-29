@@ -33,6 +33,17 @@
 resource "intersight_vnic_eth_adapter_policy" "v_eth_adapter1" {
   name        = "${var.server_policy_prefix}-vnic-eth-adapter"
   description = var.description
+
+rss_settings            = false
+
+  tcp_offload_settings {
+    large_receive = true
+    large_send    = true
+    rx_checksum   = true
+    tx_checksum   = true
+    object_type   = "vnic.TcpOffloadSettings"
+  }
+  
   organization {
     moid = var.organization
   }

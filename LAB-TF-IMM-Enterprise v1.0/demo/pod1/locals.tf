@@ -13,8 +13,9 @@ locals {
   # Intersight Organization Variable
   org_moid = data.intersight_organization_organization.my_org.id
 
-  secretkey = file("../../SecretKey.txt")
-  
+  #secretkey = file("../../SecretKey.txt")
+  secretkey = var.secretkey
+
   pod_policy_prefix = "demo-tf"                           # <-- change when copying
   
   pod_id = "FF"                                                # <-- change when copying
@@ -24,6 +25,9 @@ locals {
 #  All Identity Pools for a Pod will contain the POD ID (MAc, WWNN, WWPN, UUID)
 
   description = "Built by Terraform ${local.pod_policy_prefix}"
+
+  fc_uplink_pc_vsan_id_a = 100
+  fc_uplink_pc_vsan_id_b = 200
 
   #Every object created in the pod main module will have these tags
   pod_tags = [
@@ -41,3 +45,4 @@ locals {
   vnic_qos_fc_moid    = module.imm_pod_qos_mod.vnic_qos_fc_moid
   
 }
+

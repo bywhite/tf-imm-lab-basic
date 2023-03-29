@@ -86,7 +86,7 @@ module "intersight_policy_bundle_vmw_2" {              # <-- change when copying
   # }
 
   # Uplink VLANs Allowed List    Example: "5,6,7,8,100-130,998-1011"
-  switch_vlans_6536 = "100,101,102,313,314,997-999"
+  switch_vlans_6536 = "100,101,102,103,313,314,997-999"
 
 
 # =============================================================================
