@@ -18,3 +18,5 @@ The above example is based on the secret key being in your Downloads folder.  Ad
 You must add BackTics (same key as ~ tilda, not a single quote) around the "cat ~/Downloads/SecretKey.txt" in Export command.
 
 It doesn't matter how you create the environment variables in your OS, as long as they are preceeded with TF_VAR_
+
+On mac, run "env" from CLI to verify environment variables.  Note, they are not persistent.  If you close your CLI, they dissappear.
