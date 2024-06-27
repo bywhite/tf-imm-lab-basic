@@ -23,6 +23,9 @@ On mac, run "env" from CLI to verify environment variables.  Note, they are not 
 
 # Common Terraform Commands
 terraform init -upgrade
+
 terraform plan
+
 terraform apply
+
 terraform destroy
