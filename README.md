@@ -20,3 +20,9 @@ You must add BackTics (same key as ~ tilda, not a single quote) around the "cat 
 It doesn't matter how you create the environment variables in your OS, as long as they are preceeded with TF_VAR_
 
 On mac, run "env" from CLI to verify environment variables.  Note, they are not persistent.  If you close your CLI, they dissappear.
+
+# Common Terraform Commands
+terraform init -upgrade
+terraform plan
+terraform apply
+terraform destroy
