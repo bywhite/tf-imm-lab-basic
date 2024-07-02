@@ -17,7 +17,7 @@ export TF_VAR_apikey=<your_intersight_api_key_id>
 export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
 ```
 The above example is based on the secret key being in your Downloads folder.  Adjust for your environment.
-You must add BackTics (same key as ~ tilda, not a single quote) around the "cat ~/Downloads/SecretKey.txt" in Export command.
+You must add BackTics (same key as ~ tilda, not a single quote) around the "cat ~/Downloads/SecretKey.txt" in Export command.  The Intersight API key used is Version 2.
 
 It doesn't matter how you create the environment variables in your OS, as long as they are preceeded with TF_VAR_
 
