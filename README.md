@@ -9,7 +9,7 @@ This repo contains basic labs for learning the Intersight provider for Terraform
 The primary requirement for this lab is to have two variables set to access Intersight.
 The easiest way to set them for TF is to set local environment variables with the prefix TF_VAR_
 
-## Intersight Variables (Mac Examle)
+## Intersight Variables (Mac Example)
 export TF_VAR_apikey=<your_intersight_api_key>
 
 export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
