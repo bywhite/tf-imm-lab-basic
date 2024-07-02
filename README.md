@@ -6,7 +6,7 @@ This repo contains basic labs for learning the Intersight provider for Terraform
   Instructions for each lab module are in-line in the "main.tf" file
   for each lab module.
 
-The primary requirement for this lab is to have two variables set to access Intersight.
+The primary requirement for this lab (beyond Terraform installed) is to have two variables set to access Intersight.
 The easiest way to set them for TF is to set local environment variables with the prefix TF_VAR_
 
 ## Intersight Variables (Mac Example) - run from CLI:
