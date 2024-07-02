@@ -12,7 +12,8 @@ The easiest way to set them for TF is to set local environment variables with th
 ## Intersight Variables (Mac Example) - run from CLI:
 ```
 export TF_VAR_apikey=<your_intersight_api_key>
-
+```
+```
 export TF_VAR_secretkey=`cat ~/Downloads/SecretKey.txt` 
 ```
 The above example is based on the secret key being in your Downloads folder.  Adjust for your environment.
